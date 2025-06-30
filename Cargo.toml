@@ -1,0 +1,12 @@
+[package]
+name = "axum-test-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { version = "0.8.1", features = ["macros"] }
+serde = { version = "1.0.219", features = ["derive"] }
+shuttle-axum = "0.55.0"
+shuttle-runtime = "0.55.0"
+tokio = { version = "1.28.2", features = ["full"] }
+uuid = { version = "1.17.0", features = ["v4"] }
