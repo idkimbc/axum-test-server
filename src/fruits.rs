@@ -1,7 +1,8 @@
 use axum::{debug_handler, extract::Path, Json};
+use borsh::BorshDeserialize;
 use uuid::Uuid;
 
-#[derive(Debug, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, serde::Serialize, BorshDeserialize)]
 pub struct Fruit {
     // Singular name is more conventional
     name: String,
@@ -67,4 +68,3 @@ pub async fn get_single_fruit(Path(fruit_name): Path<String>) -> Json<Fruit> {
 
     fruit.map(Json).unwrap()
 }
-
