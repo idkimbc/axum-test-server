@@ -8,9 +8,7 @@ use solana_client::rpc_client::RpcClient;
 use solana_sdk::pubkey::Pubkey;
 
 pub mod fruits;
-pub mod satellites;
 pub use fruits::*;
-pub use satellites::*;
 pub mod generate_keypair;
 pub use generate_keypair::*;
 
@@ -38,10 +36,6 @@ async fn main() -> shuttle_axum::ShuttleAxum {
     let router = Router::new()
         .route("/fruits", get(get_all_fruits))
         .route("/fruit/{name}", get(get_single_fruit))
-        .route(
-            "/satellites/{user_authority}/{registry_authority}/{norad_id}",
-            get(get_satellite_from_norad_id),
-        )
         .route("/keypair", post(generate_keypair))
         .with_state(app_state);
 
